@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Simple Webpage</title>
+<style>
+body 
+{
+font-family: sans-serif;
+background-color:yellow;
+color: #333;
+margin: 20px;
+}
+h1 
+{
+color: black;
+text-align: center;
+margin-bottom: 20px;
+}
+h2, h3
+{
+color: darkblue;
+margin-top: 15px;
+}
+p 
+{
+line-height: 1.6;
+margin-bottom: 10px;
+}
+img
+{
+display: block;
+margin: 10px auto;
+border: 5px solid grey;
+border-radius: 10px;
+}
+a
+{
+color: #007bff;
+text-decoration: none;
+}
+a:hover
+{
+text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<center><h1><u>Welcome to My First Webpage</u></h1></center>
+<h2>About This Page</h2> 
+<p>This is a simple webpage created using basic HTML elements. We will be adding styling with CSS and interactivity with JavaScript in the following steps.</p>
+<img src="C:\Users\Bhargav\Desktop\Internships\images.jfif" height="300" width="500">
+<h3>Learn More</h3> 
+<p><a href="https://www.w3schools.com/html/" target="_blank">Visit Example Website</a></p>
+<button id="myButton">Click Me</button>
+<p>Click the button above to see a simple JavaScript alert.</p>
+<script>
+const myButton = document.getElementById('myButton');
+myButton.addEventListener('click', function() {
+alert('Successfully Created a Sample Webpage');
+});
+</script>
+</body>
+</html>
