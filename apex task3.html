@@ -1,0 +1,109 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Styling and JS</title>
+  <style>
+    body {
+      background-color:pink;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color:green;
+    }
+
+    /* Responsive Design using Media Queries like either tabs, desktops or small screens*/
+    @media (max-width: 600px) {
+      body {
+        background-color: #f0f8ff;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    .carousel img {
+      width: 100%;
+      max-height: 300px;
+      display: none;
+    }
+    .carousel img.active {
+      display: block;
+    }
+
+    .quiz, .api-data {
+      margin-top: 30px;
+      padding: 10px;
+      border: 1px solid black;
+    }
+   
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <center><h1>Advanced Styling and JavaScript</h1></center>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <img src="C:\Users\Bhargav\Desktop\Internships\quiz1.png" class="active" />
+      <img src="C:\Users\Bhargav\Desktop\Internships\comjokes.webp" />
+      <img src="C:\Users\Bhargav\Desktop\Internships\adjavascript.png" /><br><br>
+      <button onclick="nextImage()">Next Image</button>
+    </div>
+
+    <!-- Quiz -->
+    <div class="quiz">
+     <div style="border: 3px dashed black; padding: 10px;">
+      <h2><p style="color:green;">Quiz</h2></p>
+      <h4><p id="question" style="color: blue;" >What is 2 + 2?</p></h4>
+      <button onclick="checkAnswer(3)">3</button>
+      <button onclick="checkAnswer(4)">4</button>
+      <button onclick="checkAnswer(5)">5</button>
+      <p id="quizResult"></p>
+    </div>
+
+    <!-- API Fetch -->
+    <div class="api-data">
+      <div style="border: 3px dashed black; padding: 20px;">
+      <h2><p style="color:green;">Random Jokes</h2></p>
+      <button onclick="fetchJoke()">Get Joke</button>
+      <p id="joke"></p>
+    </div>
+  </div>
+
+  <script>
+    // Carousel
+    let current = 0;
+    const images = document.querySelectorAll(".carousel img");
+    function nextImage() {
+      images[current].classList.remove("active");
+      current = (current + 1) % images.length;
+      images[current].classList.add("active");
+    }
+
+    // Quiz Logic
+    function checkAnswer(answer) {
+      const result = document.getElementById("quizResult");
+      if (answer === 4) {
+        result.textContent = "Congratulations...Correct answer!";
+      } else {
+        result.textContent = "Wrong answer...Try again!";
+      }
+    }
+
+    // Fetch API Data
+    async function fetchJoke() {
+      const res = await fetch("https://official-joke-api.appspot.com/random_joke");
+      const data = await res.json();
+      document.getElementById("joke").textContent = `${data.setup} - ${data.punchline}`;
+    }
+  </script>
+</body> 
+</html>
